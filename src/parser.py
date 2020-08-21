@@ -12,8 +12,9 @@ class LastDate:
 
     def get(self):
         soup = self.open()
-        con_date = soup.find_all(attrs={"class": "day"})[-1]['data-date']
-        con_count = soup.find_all(attrs={"class": "day"})[-1]['data-count']
+        con = soup.find_all(attrs={"class": "day"})[-1]
+        con_date = con['data-date']
+        con_count = con['data-count']
         self.date = datetime.strptime(con_date, "%Y-%m-%d").date()
         self.count = con_count
 
