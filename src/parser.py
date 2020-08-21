@@ -16,7 +16,7 @@ class DailyData:
         con_date = con['data-date']
         con_count = con['data-count']
         self.date = datetime.strptime(con_date, "%Y-%m-%d").date()
-        self.count = con_count
+        self.count = int(con_count)
 
     def open(self):
         with open(self.html, "r") as f:
