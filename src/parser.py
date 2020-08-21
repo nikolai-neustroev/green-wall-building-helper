@@ -3,7 +3,7 @@ from datetime import datetime
 from bs4 import BeautifulSoup
 
 
-class LastDate:
+class DailyData:
     """Last contribution date"""
     def __init__(self, html):
         self.html = html

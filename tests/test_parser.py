@@ -1,9 +1,9 @@
 from datetime import date
 
-from parser import LastDate
+from parser import DailyData
 
 
 def test_last_date():
-    ld = LastDate('../page.html')
+    ld = DailyData('../page.html')
     ld.get()
     assert isinstance(ld.date, date)
