@@ -4,6 +4,6 @@ from parser import LastDate
 
 
 def test_last_date():
-    ld = LastDate
+    ld = LastDate('../page.html')
     ld.get()
-    assert isinstance(ld.last_date, date)
+    assert isinstance(ld.date, date)
