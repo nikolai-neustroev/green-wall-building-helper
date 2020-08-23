@@ -7,7 +7,7 @@ from parser import DailyData
 
 @pytest.fixture
 def ld() -> DailyData:
-    ld = DailyData('../page.html')
+    ld = DailyData('nikolai-neustroev')
     ld.get()
     return ld
 

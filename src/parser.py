@@ -1,12 +1,14 @@
 from datetime import datetime
 
+import requests
 from bs4 import BeautifulSoup
 
 
 class DailyData:
     """Last contribution date"""
-    def __init__(self, html):
-        self.html = html
+
+    def __init__(self, github_username):
+        self.github_username = github_username
         self.date = None
         self.count = None
 
@@ -19,7 +21,7 @@ class DailyData:
         self.count = int(con_count)
 
     def open(self):
-        with open(self.html, "r") as f:
-            contents = f.read()
-            soup = BeautifulSoup(contents, features="html5lib")
-            return soup
+        url = f'https://github.com/{self.github_username}'
+        webpage = requests.get(url)
+        soup = BeautifulSoup(webpage.text, features="html5lib")
+        return soup
