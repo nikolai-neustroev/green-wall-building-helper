@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup, element
 
 
 class DailyDataGrabber:
-    """Last contribution date"""
+    """Grabs contributions data from the GitHub profile page"""
 
     def __init__(self, github_username):
         self.github_username = github_username
@@ -26,6 +26,8 @@ class DailyDataGrabber:
 
 
 class LastDate(DailyDataGrabber):
+    """Grabs contributions data for the last available date"""
+
     def get_last(self):
         con = self.get()
         con_date = con[-1]['data-date']
@@ -35,6 +37,8 @@ class LastDate(DailyDataGrabber):
 
 
 class AllDates(DailyDataGrabber):
+    """Grabs contributions data for the last 365 days"""
+
     def get_all(self) -> dict:
         con = self.get()
         dct = dict()
@@ -44,6 +48,8 @@ class AllDates(DailyDataGrabber):
 
 
 class LastDateWithContrib(AllDates):
+    """Grabs contributions data for the last date with at least one contribution"""
+
     def get_last_date_w_contrib(self):
         dates = self.get_all()
         counts = list(dates.values())
