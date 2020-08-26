@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from parser import LastDateWithContrib
+from parser import LastDateWithContrib, NumberOfContinuousDays
 
 
 class Calc:
@@ -31,8 +31,10 @@ class MessageCreator(Calc):
         self.decision = True if self.day_count == 0 else False  # TODO: What if calc.day_count is negative?
 
     def get_message(self):
-        n = "n"
+        self.make_decision()
         if self.decision is True:
-            self.message = f"{n} days in a row! Keep it up!"  # TODO: replace n with actual number
+            nocd = NumberOfContinuousDays(self.github_username)  # TODO: refactor code so to avoid querying page twice
+            nocd.get_number_of_continuous_days()
+            self.message = f"{nocd.number_of_continuous_days} days in a row! Keep it up!"
         else:
             self.message = f"{self.day_count} day(s) with no contributions."

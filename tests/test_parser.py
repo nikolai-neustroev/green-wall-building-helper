@@ -2,8 +2,7 @@ from datetime import date
 
 import pytest
 
-from parser import LastDate, LastDateWithContrib
-
+from parser import LastDate, LastDateWithContrib, NumberOfContinuousDays
 
 username = 'nikolai-neustroev'
 
@@ -22,6 +21,13 @@ def ldwc() -> LastDateWithContrib:
     return ldwc
 
 
+@pytest.fixture
+def nocd() -> NumberOfContinuousDays:
+    nocd = NumberOfContinuousDays(username)
+    nocd.get_number_of_continuous_days()
+    return nocd
+
+
 def test_daily_data_last_date(ld):
     assert isinstance(ld.date, date)
 
@@ -36,3 +42,7 @@ def test_get_last_date_w_contrib_date(ldwc):
 
 def test_get_last_date_w_contrib_count(ldwc):
     assert isinstance(ldwc.count, int)
+
+
+def test_get_number_of_continuous_days(nocd):
+    assert isinstance(nocd.number_of_continuous_days, int)

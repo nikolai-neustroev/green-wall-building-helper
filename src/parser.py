@@ -57,3 +57,20 @@ class LastDateWithContrib(AllDates):
         last_non_zero = list(dates.items())[last_non_zero_index]
         self.date = datetime.strptime(last_non_zero[0], "%Y-%m-%d").date()
         self.count = last_non_zero[1]
+
+
+class NumberOfContinuousDays(LastDateWithContrib):
+    """Gets number of continuous days of the last row of contributions"""
+
+    def __init__(self, github_username):
+        super().__init__(github_username)
+        self.number_of_continuous_days = None
+
+    def get_number_of_continuous_days(self):
+        dates = self.get_all()
+        dv = np.fromiter(dates.values(), dtype=int)
+        contr_days = np.flatnonzero(dv)
+        consecutive = np.split(contr_days, np.where(np.diff(contr_days) != 1)[0]+1)
+        self.number_of_continuous_days = consecutive[-1].size
+
+
