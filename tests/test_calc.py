@@ -13,7 +13,6 @@ def calc() -> Calc:
 @pytest.fixture
 def msg_creator() -> MessageCreator:
     msg_creator = MessageCreator('nikolai-neustroev')
-    msg_creator.make_decision()
     msg_creator.get_message()
     return msg_creator
 
