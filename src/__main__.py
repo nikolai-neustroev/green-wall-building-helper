@@ -1,6 +1,7 @@
 from src.calc import MessageCreator
 
-username = 'nikolai-neustroev'  # TODO: replace with input
+print("Please enter your GitHub username: ")
+username = input()
 mc = MessageCreator(username)
 mc.get_message()
 print(mc.message)
