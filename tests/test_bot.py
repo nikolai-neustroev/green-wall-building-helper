@@ -1,26 +1,17 @@
 import pytest
 
-from bot import Handler
-
-config_file = '../bot.ini'
+from bot import ChatBot
 
 
 @pytest.fixture()
-def handler() -> Handler:
-    handler = Handler(config_file)
-    return handler
+def bot() -> ChatBot:
+    bot = ChatBot
+    return bot
 
 
-def test_get_token(handler):
-    handler.get_token()
-    assert isinstance(handler.token, str)
+def test_get_username(bot):
+    assert False
 
 
-def test_get_updates(handler):
-    handler.get_updates()
-    assert isinstance(handler.updates, dict)
-
-
-def test_get_last_text(handler):
-    handler.get_last_text()
-    assert isinstance(handler.last_text, str)
+def test_show_message(bot):
+    assert False
