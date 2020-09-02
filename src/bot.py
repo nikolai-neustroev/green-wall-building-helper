@@ -4,7 +4,10 @@ from handler import Handler
 
 class ChatBot(Handler, MessageCreator):
     def get_username(self):
-        pass
+        print("What is your name?")
+        self.github_username = input()
 
     def show_message(self):
-        pass
+        self.get_username()
+        self.get_message()
+        print(self.message)
