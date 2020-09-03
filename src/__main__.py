@@ -9,10 +9,10 @@ def job():
     print(mc.message)
 
 
-print("Please enter your GitHub username: ")
-username = input()
+username = input("Please enter your GitHub username: ")
+ask_time = input("Please enter the time at which you want to receive notifications (24h format): ")
 
-schedule.every().day.at("19:00").do(job)  # TODO: add custom time
+schedule.every().day.at(ask_time).do(job)
 
 while True:
     schedule.run_pending()
