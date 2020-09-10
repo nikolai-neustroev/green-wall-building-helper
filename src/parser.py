@@ -41,7 +41,7 @@ class AllDates(DailyDataGrabber):
 
     def get_all(self) -> dict:
         con = self.get()
-        dct = dict()
+        dct = {}
         for i in con:
             dct[i['data-date']] = int(i['data-count'])
         return dct
