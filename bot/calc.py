@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from src.parser import LastDateWithContrib, NumberOfContinuousDays
+from bot.parser import LastDateWithContrib, NumberOfContinuousDays
 
 
 class Calc:

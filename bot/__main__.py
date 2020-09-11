@@ -4,7 +4,7 @@ from pathlib import Path
 
 from aiogram import Bot, Dispatcher, executor, types
 
-from src.calc import ReportCreator
+from bot.calc import ReportCreator
 
 config_file = Path('bot.ini')
 config = configparser.ConfigParser()
@@ -17,11 +17,6 @@ logging.basicConfig(level=logging.INFO)
 # Initialize bot and dispatcher
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
-
-
-# @dp.message_handler()
-# async def echo(message: types.Message):
-#     await message.answer('yo')
 
 
 @dp.message_handler(commands=['start', 'help'])
