@@ -1,6 +1,6 @@
 import pytest
 
-from calc import Calc, MessageCreator
+from calc import Calc, ReportCreator
 
 
 @pytest.fixture
@@ -11,9 +11,9 @@ def calc() -> Calc:
 
 
 @pytest.fixture
-def msg_creator() -> MessageCreator:
-    msg_creator = MessageCreator('nikolai-neustroev')
-    msg_creator.get_message()
+def msg_creator() -> ReportCreator:
+    msg_creator = ReportCreator('nikolai-neustroev')
+    msg_creator.get_report()
     return msg_creator
 
 
@@ -26,4 +26,4 @@ def test_make_decision(msg_creator):
 
 
 def test_get_message(msg_creator):
-    assert isinstance(msg_creator.message, str)
+    assert isinstance(msg_creator.report, str)

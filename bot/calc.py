@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from src.parser import LastDateWithContrib, NumberOfContinuousDays
+from bot.parser import LastDateWithContrib, NumberOfContinuousDays
 
 
 class Calc:
@@ -18,23 +18,23 @@ class Calc:
         self.day_count = day_count.days
 
 
-class MessageCreator(Calc):
+class ReportCreator(Calc):
     """Creating a message based on contribution data"""
 
     def __init__(self, github_username):
         super().__init__(github_username)
         self.decision = None
-        self.message = None
+        self.report = None
 
     def make_decision(self):
         self.get_day_count_since_last_contribution()
         self.decision = True if self.day_count == 0 else False  # TODO: What if calc.day_count is negative?
 
-    def get_message(self):
+    def get_report(self):
         self.make_decision()
         if self.decision is True:
             nocd = NumberOfContinuousDays(self.github_username)  # TODO: refactor code so to avoid querying page twice
             nocd.get_number_of_continuous_days()
-            self.message = f"{nocd.number_of_continuous_days} days in a row! Keep it up!"
+            self.report = f"{nocd.number_of_continuous_days} days in a row! Keep it up!"
         else:
-            self.message = f"{self.day_count} day(s) with no contributions."
+            self.report = f"{self.day_count} day(s) with no contributions."
