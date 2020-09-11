@@ -1,8 +1,8 @@
-from calc import MessageCreator
+from calc import ReportCreator
 from handler import Handler
 
 
-class ChatBot(Handler, MessageCreator):
+class ChatBot(Handler, ReportCreator):
     def get_username(self):
         print("What is your name?")
         self.get_last_text()
@@ -10,5 +10,5 @@ class ChatBot(Handler, MessageCreator):
 
     def show_message(self):
         self.get_username()
-        self.get_message()
-        print(self.message)
+        self.get_report()
+        print(self.report)

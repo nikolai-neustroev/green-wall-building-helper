@@ -1,12 +1,12 @@
 import schedule
 
-from src.calc import MessageCreator
+from src.calc import ReportCreator
 
 
 def job():
-    mc = MessageCreator(username)
-    mc.get_message()
-    print(mc.message)
+    mc = ReportCreator(username)
+    mc.get_report()
+    print(mc.report)
 
 
 username = input("Please enter your GitHub username: ")

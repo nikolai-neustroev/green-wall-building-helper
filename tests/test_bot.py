@@ -18,4 +18,4 @@ def test_get_username(bot):
 
 def test_show_message(bot):
     bot.show_message()
-    assert isinstance(bot.message, str)
+    assert isinstance(bot.report, str)
