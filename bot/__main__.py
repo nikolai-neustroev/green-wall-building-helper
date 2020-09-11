@@ -24,11 +24,14 @@ async def send_welcome(message: types.Message):
     """
     This handler will be called when user sends `/start` or `/help` command
     """
-    await message.answer("Hi!\nI'm EchoBot!\nPowered by aiogram.")
+    await message.answer("Please enter your Github username")
 
 
 @dp.message_handler()
 async def receive_username(message: types.Message):
+    """
+    This handler will be called when user sends Github username
+    """
     rc = ReportCreator(message.text)
     rc.get_report()
     await message.answer(rc.report)
